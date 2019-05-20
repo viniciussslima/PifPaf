@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void distribuicao(vector<string> &b,
+void distribuicao(vector<string> &bolo,
 	vector<vector<string>> &p, int &q)
 {
 	vector<int> rn;
@@ -49,12 +49,12 @@ void distribuicao(vector<string> &b,
 		sort(rn.begin(), rn.end());
 		for (auto it : rn)
 		{
-			p[j].push_back(b[it]);
+			p[j].push_back(bolo[it]);
 		}
 		rn.clear();
 	}
 	for (unsigned int i = 0; i < prob.size(); i++)
 	{
-		b.erase(b.begin()+prob[i]);
+		bolo.erase(bolo.begin()+prob[i]);
 	}
 }
