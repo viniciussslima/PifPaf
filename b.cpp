@@ -37,9 +37,9 @@ int main()
 	}while(q <= 1 || q > 4);
 
 	distribuicao(b, bolo, p, q);
-	//jogar(b, bolo, p, q);
+	jogar(b, bolo, p, q);
 
-	for (int i = 0; i < q; ++i)
+	/*for (int i = 0; i < q; ++i)
 	{
 		cout << "Jogador " << i+1 << ": " << endl;
 		for (auto it : p[i])
@@ -54,5 +54,5 @@ int main()
 			cout << it << " ";
 		}
 	cout << endl;
-	cout << bolo.size() << endl;
+	cout << bolo.size() << endl;*/
 }

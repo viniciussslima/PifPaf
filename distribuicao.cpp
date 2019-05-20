@@ -41,16 +41,11 @@ void distribuicao(vector<string> &b,
 		}
 		sort(p[j].begin(), p[j].end());
 	}
+	sort(prob.begin(), prob.end());
 	for (unsigned int i = 0; i < prob.size(); i++)
 	{
-		for (unsigned int j = 0; j < bolo.size(); j++)
-		{
-			if (bolo[j] == b[prob[i]])
-			{
-				bolo.erase(bolo.begin()+j);
-			}
-		}
+		bolo.erase(bolo.begin()+prob[i]-i);
 		
 	}
-	//random_shuffle(bolo.begin(), bolo.end());
+	random_shuffle(bolo.begin(), bolo.end());
 }
