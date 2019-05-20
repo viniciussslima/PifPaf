@@ -36,20 +36,23 @@ int main()
 		cin >> q;
 	}while(q <= 1 || q > 4);
 
-	distribuicao(bolo, p, q);
-	jogar(b, bolo, p, q);
+	distribuicao(b, bolo, p, q);
+	//jogar(b, bolo, p, q);
 
-	/*for (int i = 0; i < q; ++i)
+	for (int i = 0; i < q; ++i)
 	{
 		cout << "Jogador " << i+1 << ": " << endl;
 		for (auto it : p[i])
 		{
-			cout << it << endl;
+			cout << b[it] << " ";
 		}
 		cout << endl;
 	}
-	for (auto it : b)
-	{
-		cout << it << endl;
-	}*/
+	cout << endl;
+	for (auto it : bolo)
+		{
+			cout << it << " ";
+		}
+	cout << endl;
+	cout << bolo.size() << endl;
 }

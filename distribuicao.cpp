@@ -6,34 +6,29 @@
 
 using namespace std;
 
-void distribuicao(vector<string> &bolo,
-	vector<vector<int>> &p, int &q)
+void distribuicao(vector<string> &b,
+	vector<string> &bolo,
+	vector<vector<int>> &p, 
+	int &q)
 {
 	vector<int> prob;
 	random_device rd;
 	int n;
-	int r1, r2;
+	int r = 0;
 
 	for (int j = 0; j < q; j++)
 	{
 		for (int i = 0; i < 9; ++i)
 		{
 			n = rd() % 56;
-			for (auto it : p[j])
-			{
-				if (it == n)
-				{
-					r1++;
-				}
-			} 
 			for (auto it : prob)
 			{
 				if (it == n)
 				{
-					r2++;
+					r++;
 				}
 			} 
-			if (r1 == 0 && r2 == 0)
+			if (r == 0)
 			{
 				p[j].push_back(n);
 				prob.push_back(n);
@@ -42,14 +37,20 @@ void distribuicao(vector<string> &bolo,
 			{
 				i--;
 			}
-			r1 = 0;
-			r2 = 0;
+			r = 0;
 		}
 		sort(p[j].begin(), p[j].end());
 	}
 	for (unsigned int i = 0; i < prob.size(); i++)
 	{
-		bolo.erase(bolo.begin()+prob[i]);
+		for (unsigned int j = 0; j < bolo.size(); j++)
+		{
+			if (bolo[j] == b[prob[i]])
+			{
+				bolo.erase(bolo.begin()+j);
+			}
+		}
+		
 	}
-	random_shuffle(bolo.begin(), bolo.end());
+	//random_shuffle(bolo.begin(), bolo.end());
 }
