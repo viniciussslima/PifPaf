@@ -9,13 +9,30 @@ bool verificar_vitoria()
 	return true;
 }
 
-void jogar(vector<string> &bolo,
-	vector<vector<string>> &p, int &q)
+void puxar(vector <string> &b,
+	vector <string> &bolo,
+	vector <int> &p)
 {
-	string lixo;
+	for (unsigned int i = 0; i < b.size(); i++)
+	{
+		if (b[i] == bolo[0])
+		{
+			p.push_back(i);
+			break;
+		}
+	}
+	sort(p.begin(), p.end());
+}
+
+void jogar(vector<string> &b,
+	vector<string> &bolo,
+	vector<vector<int>> &p, int &q)
+{
+	int lixo = 123;
 	int v = 0;
 	int jogadas = 0;
 	bool loop = true;
+	char escolha;
 	do{
 		//clear
 		cout << "Vez do jogador " << v+1 << ":" << endl
@@ -24,7 +41,7 @@ void jogar(vector<string> &bolo,
 		cin.get();
 		for (auto it : p[v])
 		{
-			cout << it << " ";
+			cout << b[it] << " ";
 		}
 		cout << endl;
 
@@ -34,16 +51,17 @@ void jogar(vector<string> &bolo,
 		}
 		else
 		{
-			cout << "Lixo: " << lixo << endl;
+			cout << "Lixo: " << lixo << endl
 				<< "[1] Puxar do bolo" << endl
 				<< "[2] Puxar do lixo" << endl;
 		}
 		
-		cin << escolha;
+		cin >> escolha;
 		switch(escolha)
 		{
 			case '1':
-				puxa();
+				puxar(b, bolo, p[v]);
+				descartar(p[v]);
 				break;
 			case '2':
 				//pegar do lixo

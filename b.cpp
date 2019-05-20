@@ -20,11 +20,11 @@ int main()
 		"8E", "9E", "10E", "JE", "QE", "KE", "AE"};
 	bolo = b;
 	
-	vector<vector<string>> p;
-	vector<string> p1;
-	vector<string> p2;
-	vector<string> p3;
-	vector<string> p4;
+	vector<vector<int>> p;
+	vector<int> p1;
+	vector<int> p2;
+	vector<int> p3;
+	vector<int> p4;
 	p.push_back(p1);
 	p.push_back(p2);
 	p.push_back(p3);
@@ -34,10 +34,10 @@ int main()
 	do{
 		cout << "numero de jogadores: " << endl;
 		cin >> q;
-	}while(q <= 0 || q > 4);
+	}while(q <= 1 || q > 4);
 
 	distribuicao(bolo, p, q);
-	jogar(bolo, p, q);
+	jogar(b, bolo, p, q);
 
 	/*for (int i = 0; i < q; ++i)
 	{
