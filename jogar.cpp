@@ -22,6 +22,11 @@ void puxar(vector <string> &b,
 	vector <string> &bolo,
 	vector <int> &p)
 {
+	if (bolo.size() == 0)
+	{
+		cout << "As cartas acabaram!! Niguém ganhou" << endl;
+		return;
+	}
 	for (unsigned int i = 0; i < b.size(); i++)
 	{
 		if (b[i] == bolo[0])
@@ -109,10 +114,17 @@ void jogar(vector<string> &b,
 			switch(escolha)
 			{
 				case '1':
-					puxar(b, bolo, p[v]);
-					mao(p[v], b);
-					lixo = descartar(p[v], b);
-					loop2 = false;
+					if(puxar(b, bolo, p[v]))
+					{
+						mao(p[v], b);
+						lixo = descartar(p[v], b);
+						loop2 = false;
+					}
+					else
+					{
+						loop2 = false;
+						loop = false;
+					}
 					break;
 				case '2':
 					puxar_lixo(p[v], lixo);
@@ -127,6 +139,7 @@ void jogar(vector<string> &b,
 		
 		if(verificar_vitoria(p[v]))
 		{
+			cout << "Jogador " << v+1 << "ganhou";
 			loop = false;
 		}
 		jogadas++;
