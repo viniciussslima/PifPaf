@@ -24,6 +24,23 @@ void puxar(vector <string> &b,
 	sort(p.begin(), p.end());
 }
 
+int descartar(vector<int> &p, vector<string> &b)
+{
+	string carta;
+	do{
+		cout << "Qual carta você quer discartar: " << endl;
+		cin >> carta;
+		for (unsigned int i = 0; i < b.size(); i++)
+		{
+			if (b[i] == carta)
+			{
+				return i;	
+			}
+		}
+		cout << "Carta invalida" << endl;
+	}while(true);
+}
+
 void jogar(vector<string> &b,
 	vector<string> &bolo,
 	vector<vector<int>> &p, int &q)
@@ -61,7 +78,7 @@ void jogar(vector<string> &b,
 		{
 			case '1':
 				puxar(b, bolo, p[v]);
-				descartar(p[v]);
+				lixo = descartar(p[v]);
 				break;
 			case '2':
 				//pegar do lixo
